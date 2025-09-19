@@ -1,0 +1,13 @@
+#download blackbox exporter from web, monitors as external observer just like client check, API, health check, DNS resolution, SSL cert, ping, 200 ok, Network I/O. it can be extended using pluggable metrics. just to monitor performance& availability of end point(probing, is server up or down)
+
+#move bin ./blackbox exporter to /usr/local/bin/
+
+mv black box exporter /usr/local/bin/
+
+#Configure prometheus to scrape the metrics
+
+#For prod, ensure black box exporter from as a svc and grant neccesary permission
+
+./black box exporter
+~
+
