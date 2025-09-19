@@ -1,0 +1,12 @@
+#download node exporter from web, it can measure a unix based node. some of the metrics that it can collect are
+# CPU, DISK, Memory. NB: this should be installed on node you want to export its metrics
+
+#move bin ./node exporter to /usr/local/bin/
+
+mv node exporter /usr/local/bin/
+
+#Configure prometheus to scrape the metrics
+
+#For prod, ensure node exporter from as a svc and grant neccesary permission
+
+./node exporter
