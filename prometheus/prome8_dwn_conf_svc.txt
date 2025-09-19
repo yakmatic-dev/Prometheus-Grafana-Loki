@@ -1,0 +1,76 @@
+#Install prometheus from site
+https://prometheus.io/download/
+
+#Optional, create user and services
+
+sudo groupadd --system prometheus && sudo useradd -s/bin/nologin --system -g prometheus prometheus
+
+sudo mkdir -p /var/lib/prometheus
+
+#Dir to add for rules
+
+sudo mkdir -p /etc/prometheus
+sudo mkdir -p /etc/prometheus/rules
+sudo mkdir -p /etc/prometheus/rules.s
+sudo mkdir -p /etc/prometheus/files.sd
+
+uncompressed the prometheus pkg
+
+cd prometheus
+
+#Move binary file to /usr/local/bin/ to execute everywhere
+
+sudo mv prometheus /usr/local/bin/
+
+#move the prom confg to /etc/prometheus/
+
+sudo mv prometheus.yml /etc/prometheus/
+
+prometheus --version
+
+#create a svc for prometheus
+
+
+sudo vi /etc/systemd/system/prometheus.service
+#SOF
+[Unit]
+Description=Prometheus
+Documentation=https://prometheus.io/docs/introduction/overview/
+After=network-online.target
+
+[Service]
+User=prometheus
+Group=prometheus
+Type=simple
+ExecStart=/usr/local/bin/prometheus --config.file=/etc/prometheus/prometheus.yml --storage.tsdb.path=/var/lib/prometheus --web.console.templates=/etc/prometheus/consoles --web.console.libraries=/etc/prometheus/console_libraries
+
+
+Restart=always
+
+[Install]
+WantedBy=multi-user.target
+
+
+#EOF
+
+sudo chown -R prometheus:prometheus /etc/prometheus
+
+sudo chown -R prometheus:prometheus /etc/prometheus/*
+
+sudo chmod -R 755 /etc/prometheus
+
+sudo chmod -R 755 /etc/prometheus/*
+
+#NB: Repeat same path and file modification for "/var/lib/prometheus
+
+sudo systemctl deamon-reload
+
+sudo systemctl start prometheus
+
+sudo systemctl enable prometheus
+
+#access via webui :9090
+
+
+
+
