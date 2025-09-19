@@ -1,0 +1,52 @@
+#Dashboard Design Practice
+# we can create a dashboard to monitor browser app like springbootapp, angular ,react and so on. we can create a dashboard to monitor our backend called Application Performance Monitor (APM) /Backend services. create a dashboard to monitor (Host, Network, Disk etc) 
+
+#Browser Application
+Http Error Rate , Top 10 Error mesaages
+Page view Load Time
+Page view Per Minute
+Largest Contentful paint (LCP)
+First Input Delay (FID)
+Commulative Layout shift (CLS)
+
+
+#For API or backend services
+
+API call per minute
+Error Rate per Minute
+Logs
+Hosts/Containers
+CPU usage, Memory Usage
+
+#For Infrastructure
+Metrics (CPU, Memory, Disk utilization)
+
+#Systhentic Monitoring
+
+Landing Page view Alert
+APIs health check status
+Page Load performance
+Extternal Systems status
+
+#######
+Alerting in Grafana
+Alert Rules, Notification Policies, & Contact Points
+Alert are raised when a defined rules is violated
+Rules are defined as query and are checked by Alert manager
+promql against prom instances
+
+Alert are sent to Notification policies to contact points
+
+
+#########
+working with Alert rules
+in alert rules you defined your alert. Reduce expression converts all data points to one value 
+pending period :  A threshold or rules or math for a period of uptime before it raises alert, This is in order to avoid false alert
+
+
+######
+Notification and contact point for test
+Go to mailtrap.com, create a dummymail copy and paste smtp username,host password to grafana.ino
+
+create notification policies
+

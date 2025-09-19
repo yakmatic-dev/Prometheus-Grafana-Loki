@@ -1,0 +1,47 @@
+cat config.yml
+server:
+  http_listen_port: 9080
+  grpc_listen_port: 0
+
+positions:
+  filename: /tmp/positions.yaml
+
+clients:
+  - url: http://loki:3100/loki/api/v1/push
+
+scrape_configs:
+  # System logs
+  - job_name: system
+    static_configs:
+      - targets:
+          - localhost
+        labels:
+          job: varlogs
+          __path__: /var/log/*log
+
+  # Petclinic (app) logs
+  - job_name: petclinic
+    static_configs:
+      - targets:
+          - localhost
+        labels:
+          job: petclinic
+          app: petclinic
+          team: DevOps
+          env: Prod
+          __path__: /var/log/petclinic/petclinic*.log
+
+    pipeline_stages:
+      - logfmt:
+          mapping:
+            ts:      # timestamp
+            level:   # log level
+            logger:  # class or logger name
+            msg:     # actual log message
+            thread:  # Java thread name
+      - labels:
+          level:
+          logger:
+          thread:
+
+

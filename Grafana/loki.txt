@@ -1,0 +1,79 @@
+Loki is designed to work seamlessly with grafana. it is an open source for log aggregation. since observation is not always about metrics, but it also include logs and traces. Loki is mostly used as data source for grafana, and inside grafana you can see logs and analyse them.
+Log aggregation: Collecting, storing and querying large amount of logs
+it uses similar concepts and query language as prometheus where users can visualise log data in Grafana dashboards allowing for seamlesscorrelation of log events with their metrics and observability
+Distributed archtecture: It can scale horizontally
+Cost effective storage: chunk based and then compress to save the storage.
+
+Backend >> Logfile (var/logs) >> Promtail (agents that will discover the log file and then push to >> Loki >> Grafana ingests the logs and other observability
+
+
+Grafana Loki has option of on prem, Iaas and Saas
+
+Installing Loki and Promtail
+Go to Grafana.com and have direction to github repo and find a stable release for your OS
+
+Unzip promtail and Loki and mv binary file to /usr/local/bin/
+
+Paste the config file and move to the below 
+sample /etc/promtail/config.yml, /etc/loki/config.yaml
+
+In prod,you want to create a service for both
+
+for promtail, create user promtail and group promtail --nologin and grant neccesary permission
+
+/etc/systemd/system/promtail.service
+
+[Unit]
+Description=Promtail service
+After=network.target
+
+[Service]
+User=promtail
+ExecStart=/usr/local/bin/promtail --config.file=/etc/promtail/config.yml
+Restart=on-failure
+
+[Install]
+WantedBy=multi-user.target
+
+for Loki
+
+/etc/systemd/system/Loki.service
+[Unit]
+Description=Loki service
+Documentation=https://grafana.com/docs/loki/latest/
+After=network.target
+
+[Service]
+# Run Loki as loki user
+User=loki
+Group=loki
+
+# Ensure correct working dir (needed for relative paths in config)
+WorkingDirectory=/usr/local/bin
+
+# Start command
+ExecStart=/usr/local/bin/loki --config.file=/etc/loki/config.yaml
+
+# Restart automatically if it crashes
+Restart=on-failure
+RestartSec=5
+
+# Loki needs higher file descriptor limits for log ingestion
+LimitNOFILE=65536
+
+[Install]
+
+#EOF
+
+
+sudo systemctl daemon-reload 
+!!!!
+IMPORTANT NOTICE
+
+to read logs in terms of key value pair of grafana then the app logs must be in fmt otherwise remove the pipeline completely (Promtail will ship raw logs to Loki).
+
+reformat your app code e.g ( Spring Boot logs to use logfmt/JSON) and ensure rolling and log rotation policy to the path stated in promtail.config.yml.
+
+
+
+
