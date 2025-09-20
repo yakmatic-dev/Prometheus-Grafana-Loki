@@ -32,6 +32,25 @@ Node Exporter gives infrastructure-level metrics (CPU, memory, disks, network) t
 
   ![image alt](https://github.com/yakmatic-dev/Prometheus-Grafana-Loki/blob/9a824c0fc9bf846930850069b87bf246a4da9584/images/node%20exporter%202.jpg)
 
+  ## Node exporter Dashboard
+
+Node Exporter gives infrastructure-level metrics (CPU, memory, disks, network) to help Prometheus and Grafana monitor server health example of some promql
+
+- 100 - (avg by (instance) (rate(node_cpu_seconds_total{mode="idle"}[5m])) * 100)
+- node_memory_MemTotal_bytes - node_memory_MemAvailable_bytes
+- sum by (instance) (rate(node_network_receive_bytes_total{device!="lo"}[5m]))
+
+  #### BlackBox exporter Dashboard below
+
+Blackbox Exporter = “synthetic monitoring”.
+It measures whether endpoints (HTTP, HTTPS, TCP, ICMP, DNS) are reachable, responsive, and within expected performance or SSL limits, exposing those results as Prometheus metrics
+
+  ![image alt](https://github.com/yakmatic-dev/Prometheus-Grafana-Loki/blob/main/images/Black%20Box%20exporter%20dashboard.jpg?raw=true)
+
+  
+
+
+
 
 
 
