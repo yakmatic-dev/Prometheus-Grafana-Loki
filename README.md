@@ -1,5 +1,4 @@
-<img width="1080" height="456" alt="image" src="https://github.com/user-attachments/assets/988b67c7-39de-48d8-b179-0504f1ad6e7b" /># Prometheus-Grafana-Loki
-Prometheus and Grafana have become industry standards for monitoring and visualization due to their flexibility, scalability, and powerful features. These tools effectively allows you to monitor and troubleshoot complex systems.
+<img width="1080" height="556" alt="image" src="https://github.com/user-attachments/assets/502490c0-de60-46c5-b4f9-c896600bbd57" />Prometheus and Grafana have become industry standards for monitoring and visualization due to their flexibility, scalability, and powerful features. These tools effectively allows you to monitor and troubleshoot complex systems.
 
 ## What is monitoring
 
@@ -44,7 +43,7 @@ Node Exporter gives infrastructure-level metrics (CPU, memory, disks, network) t
 
   ![image alt](https://github.com/yakmatic-dev/Prometheus-Grafana-Loki/blob/9a824c0fc9bf846930850069b87bf246a4da9584/images/node%20exporter%202.jpg)
 
-  ## Node exporter Dashboard
+  #### Node exporter Dashboard
 
 Node Exporter gives infrastructure-level metrics (CPU, memory, disks, network) to help Prometheus and Grafana monitor server health example of some promql
 
@@ -58,6 +57,47 @@ Blackbox Exporter = “synthetic monitoring”.
 It measures whether endpoints (HTTP, HTTPS, TCP, ICMP, DNS) are reachable, responsive, and within expected performance or SSL limits, exposing those results as Prometheus metrics
 
   ![image alt](https://github.com/yakmatic-dev/Prometheus-Grafana-Loki/blob/main/images/Black%20Box%20exporter%20dashboard.jpg?raw=true)
+
+  #### Promtail, Loki and Grafana Dashboard Visualisation
+
+ A sample Spring Boot app was used to write logs to a file, then add a scrape job in Promtail for both system and application log paths. Promtail ships these logs to Loki, and I  query/visualize them in Grafana with LogQL.
+
+ [ Applications / System logs ]
+           |
+           v
+      Promtail agent
+   (collect & label logs)
+           |
+           v
+         Loki
+ (store & index by labels)
+           |
+           v
+        Grafana
+ (query & visualize logs)
+
+
+The images below demonstrate the application actively generating logs at the file path specified in the Promtail configuration. Promtail collects these logs and enriches them with labels, after which Loki stores and indexes the data for visualization and analysis in Grafana.
+
+#### Application Backend logs
+![image alt](https://github.com/yakmatic-dev/Prometheus-Grafana-Loki/blob/main/images/app%20backend%20log.jpg?raw=true)
+
+#### Dashboard for Logs
+![image alt](https://github.com/yakmatic-dev/Prometheus-Grafana-Loki/blob/main/images/Detailed%20Dashboard%20for%20error.jpg?raw=true)
+
+![image alt](https://github.com/yakmatic-dev/Prometheus-Grafana-Loki/blob/main/images/raw%20application%20log.jpg?raw=true)
+
+#### App web ui
+![image alt](https://github.com/yakmatic-dev/Prometheus-Grafana-Loki/blob/main/images/web%20ui%201.jpg?raw=true)
+
+
+
+
+
+
+
+
+
 
   
 
