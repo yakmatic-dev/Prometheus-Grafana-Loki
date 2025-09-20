@@ -28,9 +28,9 @@ Node Exporter gives infrastructure-level metrics (CPU, memory, disks, network) t
 
   #### Node exporter Dashboard below
 
-  ![Diagram](images/node exporter dashboard.jpg)
+  ![image alt](https://github.com/yakmatic-dev/Prometheus-Grafana-Loki/blob/main/images/node%20exporter%20dashboard.jpg?raw=true)
 
-  ![Diagram](images/node exporter 2.jpg)
+  ![image alt](https://github.com/yakmatic-dev/Prometheus-Grafana-Loki/blob/9a824c0fc9bf846930850069b87bf246a4da9584/images/node%20exporter%202.jpg)
 
 
 
