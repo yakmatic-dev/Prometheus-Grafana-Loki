@@ -17,3 +17,21 @@ Monitoring is part of observability, to use monitoring, we need to know what to 
 ### The above directories shows how to install, configure and integrate prometheus with grafana , Dashboard Design, setting alerting rules and Notification points
 
 ![Grafana](https://img-c.udemycdn.com/course/750x422/1473698_386a_11.jpg)
+
+## Node exporter Dashboard
+
+Node Exporter gives infrastructure-level metrics (CPU, memory, disks, network) to help Prometheus and Grafana monitor server health example of some promql
+
+- 100 - (avg by (instance) (rate(node_cpu_seconds_total{mode="idle"}[5m])) * 100)
+- node_memory_MemTotal_bytes - node_memory_MemAvailable_bytes
+- sum by (instance) (rate(node_network_receive_bytes_total{device!="lo"}[5m]))
+
+  #### Node exporter Dashboard below
+
+  ![Diagram](images/node exporter dashboard.jpg)
+
+  ![Diagram](images/node exporter 2.jpg)
+
+
+
+
