@@ -1,4 +1,4 @@
-<img width="1080" height="556" alt="image" src="https://github.com/user-attachments/assets/502490c0-de60-46c5-b4f9-c896600bbd57" />Prometheus and Grafana have become industry standards for monitoring and visualization due to their flexibility, scalability, and powerful features. These tools effectively allows you to monitor and troubleshoot complex systems.
+Prometheus and Grafana have become industry standards for monitoring and visualization due to their flexibility, scalability, and powerful features. These tools effectively allows you to monitor and troubleshoot complex systems.
 
 ## What is monitoring
 
